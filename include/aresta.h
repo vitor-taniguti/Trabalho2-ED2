@@ -14,7 +14,7 @@ typedef void *aresta;
 /// @param vm Velocidade média da aresta
 /// @param nome Nome da rua a qual pertence o segmento
 /// @return Ponteiro para o objeto aresta criado
-aresta criarAresta(vertice* v1, vertice* v2, char* ldir, char* lesq, double cmp, double vm, char* nome);
+aresta criarAresta(vertice v1, vertice v2, char* ldir, char* lesq, double cmp, double vm, char* nome);
 
 /// @brief Pega o primeiro vértice da aresta
 /// @param a Ponteiro para a aresta que o vértice será pego

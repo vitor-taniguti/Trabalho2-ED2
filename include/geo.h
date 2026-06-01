@@ -2,7 +2,7 @@
 #define GEO_H
 
 #include <stdio.h>
-#include "lista.h"
+#include "hashfile.h"
 #include "quadra.h"
 
 /*
@@ -21,10 +21,10 @@ void abrirArquivoGeo(arquivo *geo, char *caminhoGeo);
 
 /// @brief Lê e processa as linhas de um arquivop de entrada
 /// @param geo Ponteiro para o arquivo de entrada
-/// @param quadras Lista onde as quadras serão inseridas
+/// @param quadras Hashfile onde as quadras serão inseridas
 /// @param tq Tipo das quadras (espessua, cor de preenchimento e de borda)
 /// @param svg Ponteiro para a arquivo com final .svg do geo
 /// @param svgQry Ponteiro para o arquivo final do .svg Qry
-void lerArquivoGeo(arquivo geo, lista quadras, tipoQuadra tq, arquivo svgGeo, arquivo svgQry);
+void lerArquivoGeo(arquivo geo, hash quadras, tipoQuadra tq, arquivo svgGeo, arquivo svgQry);
 
 #endif

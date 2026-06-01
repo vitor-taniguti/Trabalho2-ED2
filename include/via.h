@@ -2,7 +2,7 @@
 #define VIA_H
 
 #include <stdio.h>
-#include "lista.h"
+#include "hashfile.h"
 #include "quadra.h"
 #include "grafo.h"
 
@@ -21,8 +21,8 @@ void abrirArquivoVia(arquivo *via, char *caminhoVia);
 
 /// @brief Lê e processa as linhas de um arquivop de entrada
 /// @param via Ponteiro para o arquivo de entrada
-/// @param quadras Lista onde as quadras serão inseridas
+/// @param quadras Hash onde as quadras serão inseridas
 /// @param g Grafo do mapa viário
-void lerArquivoVia(arquivo via, lista quadras, grafo g);
+void lerArquivoVia(arquivo via, hash quadras, grafo g);
 
 #endif

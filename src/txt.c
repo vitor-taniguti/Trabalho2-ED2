@@ -1,0 +1,14 @@
+#include "txt.h"
+#include "string.h"
+
+void abrirArquivoTxt(arquivo* saida, char* caminhoTxt){
+    *saida = fopen(caminhoTxt, "w");
+    if (*saida == NULL){
+        printf("Falha na alocação de memória!");
+        exit(1);
+    }
+}
+
+void printarLinhaComandoTxt(arquivo txt, char* linhaComando){
+    fprintf(txt, "[*] %s\n", linhaComando);
+}
