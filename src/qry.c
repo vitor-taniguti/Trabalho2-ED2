@@ -1,6 +1,7 @@
 #include "qry.h"
 #include "quadra.h"
 #include "hashfile.h"
+#include "grafo.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -13,20 +14,24 @@ void abrirArquivoQry(arquivo *qry, char *caminhoQry){
     }
 }
 
-void o(int registrador, char* cep, char face, int numero)
+void o(int registrador, char* cep, char face, int numero){
 
-static void processarLinha(char* linha, char* comando, hash quadras, arquivo txt, arquivo svg){
+}
+
+static void processarLinha(char* linha, char* comando, hash quadras, grafo mapaViario, arquivo txt, arquivo svg){
     char cpf[15] = {0}, nome[50] = {0}, sobrenome[50] = {0}, sexo = ' ', nascimento[11] = {0};
     char cep[10] = {0}, complemento[10] = {0}, lado = ' ', tipo[2] = {0};
-    int numero = 0;
+    int registrador = 0, numero = 0;
 
     printarLinhaComandoTxt(txt, linha);
     
-    if (){
+    if (strcmp(comando, "@o?") == 0){
+        sscanf(linha, "%3s %d %s %c %d", comando, &registrador, cep, &lado, &numero);
+        o(registrador, cep, lado, numero);
     } else printf("Comando do qry inválido!\n");
 }
 
-void lerArquivoQry(arquivo qry, arquivo txt, arquivo svg, hash habitantes, hash quadras, estatistica e){
+void lerArquivoQry(arquivo qry, arquivo txt, arquivo svg, hash quadras, grafo mapaViario){
     if (qry == NULL){
         printf("O arquivo qry não foi aberto!\n");
         exit(1);
@@ -44,6 +49,6 @@ void lerArquivoQry(arquivo qry, arquivo txt, arquivo svg, hash habitantes, hash 
 
         comando[i] = '\0';
 
-        processarLinha(linha, comando, habitantes, quadras, e, txt, svg);
+        processarLinha(linha, comando, quadras, mapaViario, txt, svg);
     }
 }
