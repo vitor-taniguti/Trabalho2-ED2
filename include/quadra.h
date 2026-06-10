@@ -22,14 +22,6 @@ O identificador único da quadra é uma string chamado "cep".
 /// @return A quadra criada com os atributos especificados
 quadra criarQuadra(char* cep, double x, double y, double w, double h);
 
-/// @brief Converte a face (char) para um inteiro (0-N, 1-S, 2-L, 3-O)
-/// @param face A face que será convertida
-int converterFace(char f);
-
-/// @brief Pega o tamanho da memória alocada para a struct quadra
-/// @return O tamanho da memória alocada para a struct quadra
-int getTamanhoQuadra();
-
 /// @brief Pega a coordenada X da âncora da quadra
 /// @param q Ponteiro para a quadra que a coordenada será pega
 /// @return A coordenada X da âncora da quadra
