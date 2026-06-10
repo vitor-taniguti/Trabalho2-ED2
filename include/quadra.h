@@ -62,55 +62,16 @@ face getFaceQuadra(quadra q, int indice);
 /// @return O endereco com o índice e face especificados
 endereco getEnderecoFace(face f, int indice);
 
-/// @brief Pega a quantidade de enderecos na face especificada
-/// @param f Ponteiro para face
-/// @return Quantidade de enderecos da face 
-int getQuantidadeEnderecosFace(face f);
-
-/// @brief Aumenta a quantidade de endereços na face especificada
-/// @param f Ponteiro para face
-void incrementarQuantidadeEnderecosFace(face f);
-
 /// @brief Pega o CPF do morador do índice e do endereço especificado
 /// @param e Ponteiro para o endereco do morador
 /// @param indice Índice do cpf que será pego
 /// @return O CPF do morador do endereco especificado
 char* getCpfEndereco(endereco e, int indice);
 
-/// @brief Pega a quantidade de moradores no endereço especificado
-/// @param e Ponteiro para o endereço
-/// @return A quantidade d emoradores no endereço especificado
-int getQuantidadeMoradoresEndereco(endereco e);
-
 /// @brief Define o número do endereço solicitado
 /// @param e Endereço que o número será definido
 /// @param numero Número do endereço que será definido
 void setNumeroEndereco(endereco e, int numero);
-
-/// @brief Busca o endereço de uma quadra, face e número especificados
-/// @param q Quadra do endereço
-/// @param face Face do endereço
-/// @param numero Numero do endereço
-/// @return O endereco especificado, NULL se não encontrar
-endereco buscarEndereco(quadra q, char face, int numero);
-
-/// @brief Adiciona o cpf de um morador no endereço especificado
-/// @param cpf Cpf do morador novo
-/// @param e Ponteiro para o endereço do morador novo
-void adicionarMoradorEndereco(char* cpf, endereco e);
-
-/// @brief Remove o cpf do morador do endereço especificado
-/// @param cpf Cpf do morador que será removido
-/// @param e Ponteiro para o endereço que o morador será removido
-void removerMoradorEndereco(char* cpf, endereco e);
-
-/// @brief Pega as coordenadas do endereço especificado, com relação à sua quadra, face e número
-/// @param q Ponteiro para a quadra do endereço
-/// @param face Face do endereço
-/// @param numero Número do endereço
-/// @param x Endereço da variável que será guardada a coordenada X
-/// @param y Endereço da variável que será guardada a coordenada Y
-void getCoordenadasEndereco(quadra q, char face, int numero, double* x, double* y);
 
 /// @brief Libera a quadra
 /// @param q Ponteiro para quadra
