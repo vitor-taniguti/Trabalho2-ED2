@@ -1,10 +1,13 @@
 #include "registrador.h"
+#include <stdlib.h>
+#include <string.h>
 
 #define QUANTIDADE_REGISTRADORES 11
 
 typedef struct{
-    double x;
-    double y;
+    char* cep;
+    char* face;
+    char* numero;
     int ativo;
 } Registrador;
 
@@ -12,38 +15,72 @@ registrador* criarRegistradores(){
     Registrador* registradores = (Registrador*) malloc(QUANTIDADE_REGISTRADORES * sizeof(Registrador));
 
     for (int i = 0; i < QUANTIDADE_REGISTRADORES; i++){
-        registradores[i].x = 0.0;
-        registradores[i].y = 0.0;
+        registradores[i].cep = NULL;
+        registradores[i].face = NULL;
+        registradores[i].numero = NULL;
         registradores[i].ativo = 0;
     }
 
     return registradores;
 }
 
-void salvarPosicaoRegistrador(int indice, double x, double y){
-    if (indice < 0 || indice >= QUANTIDADE_REGISTRADORES){
-        printf("Índice de registrador inválido.\n");
-        return;
-    }
-
-    Registrador* registradores = (Registrador*) criarRegistradores();
-
-    registradores[indice].x = x;
-    registradores[indice].y = y;
-    registradores[indice].ativo = 1;
+registrador getRegistradorPorIndice(int indice, registrador* registradores){
+    Registrador** rs = registradores;
+    return rs[indice];
 }
 
-int getPosicaoRegistrador(int indice, double* x, double* y){
-    if (indice < 0 || indice >= QUANTIDADE_REGISTRADORES){
-        printf("Índice de registrador inválido.\n");
-        return 0;
+void salvarPosicaoRegistrador(registrador r, char* cep, char* numero, char* face){
+    Registrador* registrador = r;
+
+    registrador->cep = malloc(strlen(cep)+1);
+    if (registrador->cep == NULL){
+        printf("Falha ao alocar memória para o cep no registrador!\n");
+        return;
     }
+    strcpy(registrador->cep, cep);
 
-    Registrador* registradores = (Registrador*) criarRegistradores();
+    registrador->face = malloc(strlen(face)+1);
+    if (registrador->face == NULL){
+        printf("Falha ao alocar memória para a face no registrador!\n");
+        return;
+    }
+    strcpy(registrador->face, face);
 
-    if (registradores[indice].ativo){
-        *x = registradores[indice].x;
-        *y = registradores[indice].y;
+    registrador->numero = malloc(strlen(numero)+1);
+    if (registrador->numero == NULL){
+        printf("Falha ao alocar memória para o número no registrador!\n");
+        return;
+    }
+    strcpy(registrador->numero, numero);
+
+    registrador->ativo = 1;
+}
+
+int getPosicaoRegistrador(registrador r, char* cep, char* face, char* numero){
+    Registrador* registrador = r;
+
+    if (registrador->ativo){
+        cep = malloc(strlen(registrador->cep)+1);
+        if (cep == NULL){
+            printf("Falha ao alocar memória para o cep a ser pego do registrador!\n");
+            return;
+        }
+        strcpy(cep, registrador->cep);
+
+        face = malloc(strlen(registrador->face)+1);
+        if (face == NULL){
+            printf("Falha ao alocar memória para a face a ser pego do registrador!\n");
+            return;
+        }
+        strcpy(face, registrador->face);
+
+        numero = malloc(strlen(registrador->numero)+1);
+        if (numero == NULL){
+            printf("Falha ao alocar memória para o número a ser pego do registrador!\n");
+            return;
+        }
+        strcpy(numero, registrador->numero);
+
         return 1;
     } else{
         printf("Registrador não ativo.\n");

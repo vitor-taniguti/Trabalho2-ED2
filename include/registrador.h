@@ -5,9 +5,9 @@ typedef void* registrador;
 
 registrador* criarRegistradores();
 
-registrador getRegistradorPorIndice(int indice);
+registrador getRegistradorPorIndice(int indice, registrador* registradores);
 
-void salvarPosicaoRegistrador(int indice, double x, double y);
+void salvarPosicaoRegistrador(registrador r, char* cep, char* numero, char* face);
 
 int getPosicaoRegistrador(int indice, double* x, double* y);
 
